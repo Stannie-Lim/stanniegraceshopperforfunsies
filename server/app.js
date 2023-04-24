@@ -7,5 +7,6 @@ app.use("/dist", express.static(path.join(__dirname, "../dist")));
 app.use("/static", express.static(path.join(__dirname, "../static")));
 
 app.use("/api/auth", require("./api/auth"));
+app.use("/api/products", require("./api/products"));
 
 module.exports = app;
