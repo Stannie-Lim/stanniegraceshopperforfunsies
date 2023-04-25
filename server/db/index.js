@@ -1,8 +1,18 @@
 const conn = require("./conn");
 const User = require("./User");
 const Product = require("./Product");
+const Order = require("./Order");
+const LineItem = require("./LineItem");
 
 const { faker } = require("@faker-js/faker");
+
+User.hasMany(Order);
+Order.belongsTo(User);
+
+Order.hasMany(LineItem);
+LineItem.belongsTo(Order);
+
+LineItem.belongsTo(Product);
 
 const syncAndSeed = async () => {
   await conn.sync({ force: true });
@@ -21,6 +31,7 @@ const syncAndSeed = async () => {
           name: faker.commerce.product(),
           description: faker.commerce.productDescription(),
           price: faker.commerce.price(),
+          imageURL: faker.image.imageUrl(),
         })
       )
   );
@@ -39,4 +50,6 @@ module.exports = {
   syncAndSeed,
   User,
   Product,
+  LineItem,
+  Order,
 };
