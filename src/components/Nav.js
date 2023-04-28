@@ -119,7 +119,7 @@ export function Nav() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={() => navigateTo(`/`)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -148,7 +148,7 @@ export function Nav() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => navigateTo("/")}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
